@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block title %}Home{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock%}
+{% block content %}
+<h2 class="page-title">🧠 Run Sentiment or Cyberbullying Analysis</h2>
+
+<div class="form-container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Select Model:</label>
+            {{ form.model_type }}
+        </div>
+
+        <div class="form-group">
+            <label>Enter Text:</label>
+            {{ form.input_text }}
+        </div>
+
+        <div class="form-group">
+            <label>Or Upload File:</label>
+            {{ form.file }}
+        </div>
+
+        <button type="submit" class="btn-analyze">Analyze Now</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Analyzer{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <header class="ai-header" style="background-color:red;">
+        <h1>🧠 AI Analyzer Dashboard</h1>
+        {% comment %} <nav>
+            <a href="/">Home</a>
+            <a href="/analyze/">Analyze Text</a>
+            <a href="/about/">About</a>
+        </nav> {% endcomment %}
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© {{ year|default:"2025" }} Cyberbullying & Sentiment AI System</p>
+    </footer>
+</body>
+</html>

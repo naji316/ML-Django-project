@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Results{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/result.css' %}">
+
+<div class="result-container">
+    <h2>📊Cyberbullying Analysis Results (NLP)</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% elif results %}
+        <table>
+            <tr>
+                <th>Text</th>
+                <th>Prediction</th>
+            </tr>
+            {% for text, pred in results %}
+            <tr>
+                <td>{{ text }}</td>
+                <td>{{ pred }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+
+    <a href="{% url 'home' %}" class="btn">← Back to Home</a>
+</div>
+{% endblock %}
